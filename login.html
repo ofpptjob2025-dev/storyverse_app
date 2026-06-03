@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - StoryVerse AI</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-transparent">
+        <div class="navbar-brand">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i> StoryVerse AI
+            </a>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Welcome Back</h1>
+                    <p>Log in to your StoryVerse AI account</p>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="rememberMe" name="remember_me">
+                        <label for="rememberMe">Remember me</label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Log In
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            setupLoginForm();
+        });
+
+        function setupLoginForm() {
+            const form = document.getElementById('loginForm');
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const data = {
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    remember_me: document.getElementById('rememberMe').checked
+                };
+
+                try {
+                    const response = await fetch('api/auth.php?action=login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        localStorage.setItem('auth_token', result.data.token);
+                        localStorage.setItem('user_id', result.data.user_id);
+                        localStorage.setItem('username', result.data.username);
+                        localStorage.setItem('language', result.data.language);
+                        showToast('Login successful!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1500);
+                    } else {
+                        showToast(result.message || 'Login failed', 'error');
+                    }
+                } catch (error) {
+                    showToast('An error occurred. Please try again.', 'error');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
