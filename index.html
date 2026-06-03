@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryVerse AI - Premium Story Generation Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i> StoryVerse AI
+            </a>
+        </div>
+        <div class="navbar-menu" id="navbarMenu">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="stories-library.html" class="nav-link">Browse Stories</a>
+            <a href="#about" class="nav-link">About</a>
+        </div>
+        <div class="nav-actions">
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+                <option value="fr">Français</option>
+            </select>
+            <a href="login.html" class="btn btn-outline" id="loginBtn">Log In</a>
+            <a href="register.html" class="btn btn-primary" id="registerBtn">Sign Up</a>
+            <a href="dashboard.html" class="btn btn-primary" id="dashboardBtn" style="display:none;">Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="gradient-blob blob-1"></div>
+            <div class="gradient-blob blob-2"></div>
+            <div class="gradient-blob blob-3"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Create Extraordinary Stories with AI</h1>
+            <p class="hero-subtitle">Generate captivating stories with AI-powered creativity, stunning imagery, and unlimited imagination</p>
+            <div class="hero-actions">
+                <a href="register.html" class="btn btn-primary btn-lg"><i class="fas fa-pen-fancy"></i> Start Creating Now</a>
+                <a href="stories-library.html" class="btn btn-outline btn-lg"><i class="fas fa-book-reader"></i> Explore Stories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose StoryVerse AI?</h2>
+            <p class="section-subtitle">Powerful features to bring your stories to life</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                <h3>AI-Powered Generation</h3>
+                <p>Advanced AI creates unique, engaging stories based on your prompts</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-image"></i></div>
+                <h3>AI-Generated Images</h3>
+                <p>Stunning visuals automatically generated to match your story</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <h3>Community Features</h3>
+                <p>Rate, comment, and discover stories from talented creators</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                <h3>Multi-Language Support</h3>
+                <p>Create and explore stories in Arabic, English, and French</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h3>Save Favorites</h3>
+                <p>Build your personal collection of favorite stories</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Fully Responsive</h3>
+                <p>Seamless experience on desktop, tablet, and mobile devices</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Stories -->
+    <section class="trending-preview">
+        <div class="section-header">
+            <h2 class="section-title">Trending Stories</h2>
+            <a href="stories-library.html?sort=trending" class="btn btn-outline btn-sm">View All</a>
+        </div>
+        <div class="stories-grid" id="trendingStories">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Tell Your Story?</h2>
+        <p>Join thousands of creators already using StoryVerse AI</p>
+        <a href="register.html" class="btn btn-primary btn-lg"><i class="fas fa-rocket"></i> Get Started for Free</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 StoryVerse AI. All rights reserved.</p>
+    </footer>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
